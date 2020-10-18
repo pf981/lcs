@@ -18,7 +18,7 @@
 #' @return A character vector of the same length as \code{str1} and 
 #'   \code{str2}.
 #' @examples
-#' longest_common_substring('abcdefgh', 'xxxbcdexxx')
+#' longest_common_substring('abcdefgh', 'axxxbcdexxx')
 #' @export
 longest_common_substring <- function(str1, str2) {
     .Call(`_lcs_longest_common_substring`, str1, str2)
@@ -26,17 +26,22 @@ longest_common_substring <- function(str1, str2) {
 
 #' Longest common subsequence
 #' 
-#' Find the longest common substring of two strings.
+#' Find the longest common subsequence of two strings.
 #' 
+#' @details
 #' Implemented in C++. The algorithm runs in \code{O(n*r)} time where \code{n} 
 #' and \code{r} are the lengths of the two strings.
+#' 
+#' Subsequences, unlike substrings, are not required to be a contiguous 
+#' sequence of characters within the two strings. For substrings, use 
+#' \code{\link[lcs]{longest_common_substring}}.
 #'
 #' @param str1 A character vector
 #' @param str2 A character vector
 #' @return A character vector of the same length as \code{str1} and 
 #'   \code{str2}.
 #' @examples
-#' longest_common_substring('abcdefgh', 'xxxbcdexxx')
+#' longest_common_subsequence('abcdefgh', 'axxxbcdexxx')
 #' @export
 longest_common_subsequence <- function(str1, str2) {
     .Call(`_lcs_longest_common_subsequence`, str1, str2)

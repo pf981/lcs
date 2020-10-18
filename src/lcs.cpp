@@ -68,27 +68,43 @@ String longest_common_subsequence_single(String str1, String str2) {
   int r = a.length();
   int n = b.length();
   std::vector<std::vector<int> > table(r + 1, std::vector<int>(n + 1));
-  int z = 0;
-  std::string result;
   
   for (int i = 0; i < r; i++)
-    table[i, 0] = 0;
+    table[i][0] = 0;
 
   for (int j = 0; j < n; j++)
-    table[0, j] = 0;
+    table[0][j] = 0;
 
   for (int i = 1; i <= r; i++) {
     for (int j = 1; j <= n; j++)
     {
       if (a[i - 1] == b[j - 1])
-        table[i, j] = table[i - 1, j - 1] + 1;
+        table[i][j] = table[i - 1][j - 1] + 1;
       else
-        table[i, j] = max(table[i, j - 1], table[i - 1, j]);
+        table[i][j] = std::max(table[i][j - 1], table[i - 1][j]);
     }
   }
   
-  // TODO: Turn it back into string
-  return String();
+  int index = table[r][n];
+  std::string result(index, ' ');
+  int i = r;
+  int j = n;
+  while (i > 0 && j > 0) { 
+    if (a[i - 1] == b[j - 1]) { 
+      result[index - 1] = a[i - 1];
+      i--;
+      j--;
+      index--;
+    }
+    else if (table[i - 1][j] > table[i][j - 1]) {
+      i--; 
+    }
+    else {
+      j--;
+    }
+  }
+
+  return result;
 }
 
 //' Longest common subsequence
