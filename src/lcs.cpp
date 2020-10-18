@@ -35,33 +35,6 @@ String longest_common_substring_single(String str1, String str2) {
   return result;
 }
 
-//' Longest common substring
-//' 
-//' Find the longest common substring of two strings.
-//' 
-//' @details
-//' Implemented in C++. The algorithm runs in \code{O(n*r)} time where \code{n} 
-//' and \code{r} are the lengths of the two strings.
-//' 
-//' Substrings are required to be a contiguous sequence of characters within 
-//' the two strings. For subsequences, which allow discontiguity, use 
-//' \code{\link[lcs]{longest_common_subsequence}}.
-//'
-//' @param str1 A character vector
-//' @param str2 A character vector
-//' @return A character vector of the same length as \code{str1} and 
-//'   \code{str2}.
-//' @examples
-//' longest_common_substring('abcdefgh', 'axxxbcdexxx')
-//' @export
-// [[Rcpp::export]]
-StringVector longest_common_substring(StringVector str1, StringVector str2) {
-  if (str1.length() != str2.length())
-    stop("str1 and str2 must be the same length.");
-  
-  return mapply(str1, str2, longest_common_substring_single);
-}
-
 String longest_common_subsequence_single(String str1, String str2) {
   std::string a = str1;
   std::string b = str2;
@@ -71,10 +44,10 @@ String longest_common_subsequence_single(String str1, String str2) {
   
   for (int i = 0; i < r; i++)
     table[i][0] = 0;
-
+  
   for (int j = 0; j < n; j++)
     table[0][j] = 0;
-
+  
   for (int i = 1; i <= r; i++) {
     for (int j = 1; j <= n; j++)
     {
@@ -103,8 +76,35 @@ String longest_common_subsequence_single(String str1, String str2) {
       j--;
     }
   }
-
+  
   return result;
+}
+
+//' Longest common substring
+//' 
+//' Find the longest common substring of two strings.
+//' 
+//' @details
+//' Implemented in C++. The algorithm runs in \code{O(n*r)} time where \code{n} 
+//' and \code{r} are the lengths of the two strings.
+//' 
+//' Substrings are required to be a contiguous sequence of characters within 
+//' the two strings. For subsequences, which allow discontiguity, use 
+//' \code{\link[lcs]{longest_common_subsequence}}.
+//'
+//' @param str1 A character vector
+//' @param str2 A character vector
+//' @return A character vector of the same length as \code{str1} and 
+//'   \code{str2}.
+//' @examples
+//' longest_common_substring('abcdefgh', 'axxxbcdexxx')
+//' @export
+// [[Rcpp::export]]
+StringVector longest_common_substring(StringVector str1, StringVector str2) {
+  if (str1.length() != str2.length())
+    stop("str1 and str2 must be the same length.");
+  
+  return mapply(str1, str2, longest_common_substring_single);
 }
 
 //' Longest common subsequence
