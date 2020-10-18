@@ -6,7 +6,7 @@ String longest_common_substring_single(String str1, String str2) {
   std::string b = str2;
   int r = a.length();
   int n = b.length();
-  std::vector<std::vector<int> > table(r , std::vector<int>(n));
+  std::vector<std::vector<int> > table(r, std::vector<int>(n));
   int z = 0;
   std::string result;
   
@@ -63,7 +63,31 @@ StringVector longest_common_substring(StringVector str1, StringVector str2) {
 }
 
 String longest_common_subsequence_single(String str1, String str2) {
-  // TODO
+  std::string a = str1;
+  std::string b = str2;
+  int r = a.length();
+  int n = b.length();
+  std::vector<std::vector<int> > table(r + 1, std::vector<int>(n + 1));
+  int z = 0;
+  std::string result;
+  
+  for (int i = 0; i < r; i++)
+    table[i, 0] = 0;
+
+  for (int j = 0; j < n; j++)
+    table[0, j] = 0;
+
+  for (int i = 1; i <= r; i++) {
+    for (int j = 1; j <= n; j++)
+    {
+      if (a[i - 1] == b[j - 1])
+        table[i, j] = table[i - 1, j - 1] + 1;
+      else
+        table[i, j] = max(table[i, j - 1], table[i - 1, j]);
+    }
+  }
+  
+  // TODO: Turn it back into string
   return String();
 }
 
