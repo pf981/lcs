@@ -49,8 +49,7 @@ String longest_common_subsequence_single(String str1, String str2) {
     table[0][j] = 0;
   
   for (int i = 1; i <= r; i++) {
-    for (int j = 1; j <= n; j++)
-    {
+    for (int j = 1; j <= n; j++) {
       if (a[i - 1] == b[j - 1])
         table[i][j] = table[i - 1][j - 1] + 1;
       else
