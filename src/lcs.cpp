@@ -35,10 +35,17 @@ String longest_common_substring_single(String str1, String str2) {
   return result;
 }
 
+//' Longest common substring
+//' 
 //' Find the longest common substring of two strings.
+//' 
+//' Implemented in C++. The algorithm runs in \code{O(n*r)} time where \code{n} 
+//' and \code{r} are the lengths of the two strings.
 //'
 //' @param str1 A character vector
 //' @param str2 A character vector
+//' @return A character vector of the same length as \code{str1} and 
+//'   \code{str2}.
 //' @export
 // [[Rcpp::export]]
 StringVector longest_common_substring(StringVector str1, StringVector str2) {

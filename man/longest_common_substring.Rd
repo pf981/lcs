@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{longest_common_substring}
 \alias{longest_common_substring}
-\title{Find the longest common substring of two strings.}
+\title{Longest common substring}
 \usage{
 longest_common_substring(str1, str2)
 }
@@ -11,6 +11,14 @@ longest_common_substring(str1, str2)
 
 \item{str2}{A character vector}
 }
+\value{
+A character vector of the same length as \code{str1} and 
+  \code{str2}.
+}
 \description{
 Find the longest common substring of two strings.
+}
+\details{
+Implemented in C++. The algorithm runs in \code{O(n*r)} time where \code{n} 
+and \code{r} are the lengths of the two strings.
 }
