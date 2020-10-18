@@ -35,6 +35,11 @@ String longest_common_substring_single(String str1, String str2) {
   return result;
 }
 
+//' Find the longest common substring of two strings.
+//'
+//' @param str1 A character vector
+//' @param str2 A character vector
+//' @export
 // [[Rcpp::export]]
 StringVector longest_common_substring(StringVector str1, StringVector str2) {
   if (str1.length() != str2.length())
