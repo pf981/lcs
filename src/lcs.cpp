@@ -46,6 +46,8 @@ String longest_common_substring_single(String str1, String str2) {
 //' @param str2 A character vector
 //' @return A character vector of the same length as \code{str1} and 
 //'   \code{str2}.
+//' @examples
+//' longest_common_substring('abcdefgh', 'xxxbcdexxx')
 //' @export
 // [[Rcpp::export]]
 StringVector longest_common_substring(StringVector str1, StringVector str2) {

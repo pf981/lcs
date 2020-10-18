@@ -12,6 +12,8 @@
 #' @param str2 A character vector
 #' @return A character vector of the same length as \code{str1} and 
 #'   \code{str2}.
+#' @examples
+#' longest_common_substring('abcdefgh', 'xxxbcdexxx')
 #' @export
 longest_common_substring <- function(str1, str2) {
     .Call(`_lcs_longest_common_substring`, str1, str2)

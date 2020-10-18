@@ -22,3 +22,6 @@ Find the longest common substring of two strings.
 Implemented in C++. The algorithm runs in \code{O(n*r)} time where \code{n} 
 and \code{r} are the lengths of the two strings.
 }
+\examples{
+longest_common_substring('abcdefgh', 'xxxbcdexxx')
+}
