@@ -1,6 +1,44 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+StringVector longest_common_substring_all(String str1, String str2) {
+  std::string a = str1;
+  std::string b = str2;
+  int r = a.length();
+  int n = b.length();
+  std::vector<std::vector<int> > table(r, std::vector<int>(n));
+  int z = 0;
+  std::set<std::string> results;
+  
+  for (int i = 0; i < r; ++i) {
+    for (int j = 0; j < n; ++j) {
+      if (a[i] == b[j]) {
+        if (i == 0 || j == 0)
+          table[i][j] = 1;
+        else
+          table[i][j] = table[i - 1][j - 1] + 1;
+        
+        if (table[i][j] > z) {
+          z = table[i][j];
+          results.clear();
+          results.insert(a.substr(i - z + 1, z));
+        }
+        else if (table[i][j] == z) {
+          results.insert(a.substr(i - z + 1, z));
+        }
+      }
+      else {
+        table[i][j] = 0;
+      }
+    }
+  }
+  
+  // results_vec = 
+  
+  // return results;
+  return StringVector(results.begin(), results.end());
+}
+
 String longest_common_substring_single(String str1, String str2) {
   std::string a = str1;
   std::string b = str2;
@@ -21,9 +59,6 @@ String longest_common_substring_single(String str1, String str2) {
         if (table[i][j] > z) {
           z = table[i][j];
           result = a.substr(i - z + 1, z);
-        }
-        else if (table[i][j] == z) {
-          result = result + a.substr(i - z + 1, z);
         }
       }
       else {
