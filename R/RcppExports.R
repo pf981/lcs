@@ -24,6 +24,14 @@ longest_common_substring <- function(str1, str2) {
     .Call(`_lcs_longest_common_substring`, str1, str2)
 }
 
+#' Longest common substring
+#' 
+#' Find the longest common substring of two strings.
+#'
+longest_common_substring_all <- function(str1, str2) {
+    .Call(`_lcs_longest_common_substring_all`, str1, str2)
+}
+
 #' Longest common subsequence
 #' 
 #' Find the longest common subsequence of two strings.

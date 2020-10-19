@@ -17,6 +17,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// longest_common_substring_all
+List longest_common_substring_all(StringVector str1, StringVector str2);
+RcppExport SEXP _lcs_longest_common_substring_all(SEXP str1SEXP, SEXP str2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< StringVector >::type str1(str1SEXP);
+    Rcpp::traits::input_parameter< StringVector >::type str2(str2SEXP);
+    rcpp_result_gen = Rcpp::wrap(longest_common_substring_all(str1, str2));
+    return rcpp_result_gen;
+END_RCPP
+}
 // longest_common_subsequence
 StringVector longest_common_subsequence(StringVector str1, StringVector str2);
 RcppExport SEXP _lcs_longest_common_subsequence(SEXP str1SEXP, SEXP str2SEXP) {
@@ -32,6 +44,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_lcs_longest_common_substring", (DL_FUNC) &_lcs_longest_common_substring, 2},
+    {"_lcs_longest_common_substring_all", (DL_FUNC) &_lcs_longest_common_substring_all, 2},
     {"_lcs_longest_common_subsequence", (DL_FUNC) &_lcs_longest_common_subsequence, 2},
     {NULL, NULL, 0}
 };
